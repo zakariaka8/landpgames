@@ -1,405 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameHub - Play & Download</title>
-<style>
-/* ===== Reset ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ===== Body ===== */
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: #fff;
-  line-height: 1.6;
-  background: #0d0d0d;
-}
-  /* Default (desktop) */
-h1 {
-  font-size: 2.5rem; /* كبير */
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* Mobile screens */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.6rem; /* أصغر باش يبان مزيان */
-    line-height: 1.3;
-    margin: 15px 0;
-  }
-
-  h2, h3 {
-    font-size: 1.2rem; /* عناوين فرعية */
-  }
-
-  p {
-    font-size: 0.9rem; /* نصوص عادية */
-  }
-}
-
-
-/* Navbar */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 15px 30px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  font-weight: bold;
-  z-index: 1000;
-  backdrop-filter: blur(6px);
-  text-align: center;
-}
-
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffeb3b;
-  letter-spacing: 1px;
-  text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
-}
-
-/* Hero Section */
-.hero {
-  position: relative;
-  height: 60vh;
-  width: 100%;
-  background: url('https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-1f5c-61f7-bdad-2115df9f252c/raw?se=2025-08-27T13%3A12%3A44Z&sp=r&sv=2024-08-04&sr=b&scid=e8f664dc-adbb-5514-b3fc-4475432dfbd8&skoid=24a7dec3-38fc-4904-b888-8abe0855c442&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-27T10%3A42%3A25Z&ske=2025-08-28T10%3A42%3A25Z&sks=b&skv=2024-08-04&sig=Osttf1rDpWlym2pKRVagz1CwbNe7KP1CLpTbCCziBog%3D') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.hero-content {
-  position: relative;
-  color: #fff;
-  z-index: 2;
-  max-width: 700px;
-  padding: 20px;
-}
-  .hero h1 {
-  font-size: 28px;       /* الحجم للتلفون */
-  line-height: 1.3;      /* المسافة بين الأسطر */
-  font-weight: bold;
-}
-
-.hero h1 .highlight {
-  display: block;
-  font-size: 32px;       /* أكبر باش تبان كلمة Games واضحة */
-  color: #ffcc00;        /* لون مميز */
-  text-align: center;    /* باش تكون وسط */
-}
-
-
-
-
-.hero-content p {
-  font-size: 1.3rem;
-  margin-bottom: 25px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-}
-
-.game-card {
-  background: #1a1a1a;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 420px; /* نفس الطول لكل الكروت */
-}
-
-.game-card img {
-  width: 100%;
-  height: 200px; /* نفس حجم الصور */
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.game-card h3 {
-  font-size: 18px;
-  margin: 0 0 10px;
-  color: #ffeb3b;
-  text-align: center;
-}
-
-.game-card p {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 15px;
-  text-align: center;
-  line-height: 1.4em;
-  height: 40px; /* يحدد الطول للنص */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.download-btn {
-  display: inline-block;
-  background: #ff3c78;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  text-align: center;
-  transition: 0.3s ease;
-}
-
-
-
-
-/* Games Section */
-.games-section {
-  text-align: center;
-  padding: 60px 20px;
-  background: #0f0f0f;
-  color: #fff;
-}
-
-.games-section .section-title {
-  font-size: 2rem;
-  margin-bottom: 40px;
-  color: #ff3c78;
-}
-
-.games-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-/* Download Button */
-.download-btn {
-  display: inline-block;
-  background: #ff3c78;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.download-btn:hover {
-  background: #ff1744;
-  transform: scale(1.05);
-}
-
-/* Testimonials */
-.testimonials {
-  padding: 60px 20px;
-  text-align: center;
-  background: #0d0d0d;
-}
-
-.testimonials h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #ff3c78;
-}
-
-.testi-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.testi {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-  font-style: italic;
-  transition: transform 0.3s ease;
-}
-
-.testi:hover {
-  transform: translateY(-5px);
-}
-
-.testi span {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-  color: #ffeb3b;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 25px 15px;
-  background: #000;
-  color: #aaa;
-  font-size: 0.9rem;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameHub - Download Top Games</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🎮 GameHub</div>
+    <nav>
+      <a href="#games">Games</a>
+      <a href="#feedback">Feedback</a>
+    </nav>
+  </header>
 
-<header class="navbar">
-  <div class="logo">GameHub</div>
-</header>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🔥 Download Top Games</h1>
+      <p>Play trending games and unlock exclusive rewards.</p>
+      <a href="#games" class="cta-btn">Play Now</a>
+    </div>
+  </section>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>🔥Download Top Games 🎮</h1>
-    <p>Discover the hottest mobile games and start Playing  today!</p>
-  </div>
-</section>
+  <!-- Games Grid -->
+  <section id="games" class="games-section">
+    <h2>Top Picks</h2>
+    <div class="games-grid">
+      <!-- Card Example -->
+      <div class="game-card top-pick">
+        <span class="badge">🔥 Hot</span>
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Game 1">
+        <h3>Action Legend</h3>
+        <a href="#" class="download-btn">Play Now</a>
+      </div>
 
-<section class="games-section">
-  <div class="games-grid">
+      <div class="game-card">
+        <img src="https://img.youtube.com/vi/3fumBcKC6RE/maxresdefault.jpg" alt="Game 2">
+        <h3>Speed Racer</h3>
+        <a href="#" class="download-btn">Play Now</a>
+      </div>
 
-    <div class="game-card">
-      <img src="https://bleedingcool.com/wp-content/uploads/2024/08/Dunk-City-Dynasty-Artwork-900x900.jpg" alt="Dunk City Dynasty">
-      <h3>Dunk City Dynasty</h3>
-      <p>🏀 The ultimate basketball experience!</p>
-      <a href="https://appinstallcheck.com/cl/i/grqmj3" class="download-btn" >Download</a>
-    </div>
+      <div class="game-card top-pick">
+        <span class="badge">⭐ Editor's Pick</span>
+        <img src="https://img.youtube.com/vi/e-ORhEE9VVg/maxresdefault.jpg" alt="Game 3">
+        <h3>Fantasy Quest</h3>
+        <a href="#" class="download-btn">Play Now</a>
+      </div>
 
-    <div class="game-card">
-      <img src="https://www.pockettactics.com/wp-content/sites/pockettactics/2024/09/valorant-mobile.jpg" alt="Valorant Mobile">
-      <h3>Valorant Mobile</h3>
-      <p>🚀 Next-level mobile gaming experience.</p>
-      <a href="https://appinstallcheck.com/cl/i/7j7wvk" class="download-btn">Download</a>
+      <div class="game-card">
+        <img src="https://img.youtube.com/vi/oHg5SJYRHA0/maxresdefault.jpg" alt="Game 4">
+        <h3>Battle Royale</h3>
+        <a href="#" class="download-btn">Play Now</a>
+      </div>
     </div>
+  </section>
 
-    <div class="game-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwsm7_v5b1R5y1uuE4UuqPXf2xsx8mGUf8yn2KN7m3m7rcDAy-eMykNZzXqaZ2YXYnUxU&usqp=CAU" alt="Whiteout Survival">
-      <h3>Whiteout Survival</h3>
-      <p>❄️ Survive the elements and build your empire!</p>
-      <a href="https://appinstallcheck.com/cl/i/pq23r4" class="download-btn" >Download</a>
+  <!-- Feedback -->
+  <section id="feedback" class="feedback-section">
+    <h2>Player Feedback</h2>
+    <div class="feedback-cards">
+      <div class="feedback-card">
+        <p>"Best game site ever! Super fast downloads."</p>
+        <span>- Alex</span>
+      </div>
+      <div class="feedback-card">
+        <p>"Found my favorite games here, 100% recommend."</p>
+        <span>- Sarah</span>
+      </div>
+      <div class="feedback-card">
+        <p>"Easy to use and lots of rewards. Love it!"</p>
+        <span>- John</span>
+      </div>
     </div>
+  </section>
 
-    <div class="game-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhTL1-kRRq2GCe7JKKTJDN4Gr9XbzrGcSxiQ&s" alt="Zenless Zone Zero">
-      <h3>Zenless Zone Zero</h3>
-      <p>🌌 Dive into a futuristic city filled with danger and adventure!</p>
-      <a href="https://appinstallcheck.com/cl/i/5ne7lv" class="download-btn" >Download</a>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 GameHub. All Rights Reserved.</p>
+  </footer>
 
-    <div class="game-card">
-      <img src="https://image.api.playstation.com/vulcan/ap/rnd/202408/2010/945946402443fd88433714cd697dabf25c29725d5e659eb2.png" alt="Genshin Impact">
-      <h3>Genshin Impact</h3>
-      <p>🌍 Explore a vast open world filled with magic and mystery!</p>
-      <a href="https://appinstallcheck.com/cl/i/o4xmeq" class="download-btn">Download</a>
-    </div>
-
-    <div class="game-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZJ1SBRAStTkezKVtUfIfeX2SU5P8SPAYy_Q&s" alt="Block Blast">
-      <h3>Block Blast</h3>
-      <p>🧩 Match blocks and clear the board in this addictive puzzle game!</p>
-      <a href="https://appinstallcheck.com/cl/i/qne16w" class="download-btn" >Download</a>
-    </div>
-
-    <div class="game-card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvhzZJJJJyZSDTKygPWmyOxzymKX_33cwWNA&s" alt="Honor of Kings">
-      <h3>Honor of Kings</h3>
-      <p>⚔️ Master the battlefield with legendary heroes!</p>
-      <a href="https://appinstallcheck.com/cl/i/m52n34" class="download-btn" >Download</a>
-    </div>
-
-    <div class="game-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Love_and_Deepspace_poster.jpg" alt="Love and Deepspace">
-      <h3>Love and Deepspace</h3>
-      <p>💖 Dive into a galaxy of love and adventure!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9l2e.webp" alt="Snaky Cat">
-      <h3>Snaky Cat</h3>
-      <p>🐱 Battle other cats in a fun royale adventure!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://news.exitlag.com/wp-content/uploads/2025/07/rainbow-six-siege-mobile.webp" alt="Tom Clancy's Rainbow Six Mobile">
-      <h3>Tom Clancy's Rainbow Six Mobile</h3>
-      <p>🔫 Engage in tactical combat with elite operators!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://i.ytimg.com/vi/-OhfNQ3Xn-c/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDosVxaKv_uB8DPwjLaux6ric8roQ" alt="Tales of Transformation"> 
-      <h3>Pokémon GO: Tales of Transformation</h3>
-      <p>🌟 Catch, evolve, and explore the new Pokémon adventures!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-    <div class="game-card">
-      <img src="https://1-upgames.com/wp-content/uploads/2025/07/re-survival-unit.jpg" alt="Snaky Cat">
-      <h3>Resident Evil: Survival Unit</h3>
-      <p>🧟 Survive the apocalypse and command your units to victory!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://m.media-amazon.com/images/I/91NLpx-8O8L.png" alt="Eternium: Shadow Wars">
-      <h3>Eternium: Shadow Wars</h3>
-      <p>⚔️ Battle shadows and become the ultimate hero!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://products.eneba.games/resized-products/uluYe-gqRRT_wObbKQNZymiQjROyqgetIzcLRAiM0YE_350x200_3x-0.png" alt="Starship Command: Mobile">
-      <h3>Starship Command: Mobile</h3>
-      <p>🚀 Command your fleet and dominate the galaxy!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-     <div class="game-card">
-      <img src="https://staticdelivery.nexusmods.com/mods/3333/images/thumbnails/8306/8306-1683821664-455239388.png" alt="Cyber Drift 2077">
-      <h3>Cyber Drift 2077</h3>
-      <p>🏎️ Neon streets, high-speed drift battles!!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-    
-   <div class="game-card">
-      <img src="https://play-lh.googleusercontent.com/kpp0mlBeimoYbVPnCVZyDc6sIIWaBbYN04-5sLKUZ1Rxu5Ot6kAHb7AG2hy6E2PywomuWYvra7eanpV-FYW49Dg=w648-h364-rw" alt="Mystic Farm: Harvest Saga">
-      <h3>Mystic Farm: Harvest Saga</h3>
-      <p>🌾 Grow your farm, trade, and become a legend!</p>
-      <a href="https://contentlocked.net/cl/i/4oqrp5" class="download-btn" >Download</a>
-    </div>
-
-
-  </div>
-</section>
-
-<section class="testimonials">
-  <h2>What Gamers Are Saying</h2>
-  <div class="testi-cards">
-    <div class="testi">
-      <p>“Dunk City Dynasty is insanely fun! The gameplay feels so real.”</p>
-      <span>- Malik B.</span>
-    </div>
-    <div class="testi">
-      <p>“Wow I love it !”</p>
-      <span>- Sarah M.</span>
-    </div>
-    <div class="testi">
-      <p>“ Block Blast link worked perfectly. Now I’m hooked!”</p>
-      <span>- Kevin R.</span>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 GameHub. All Rights Reserved.</p>
-</footer>
-
+  <!-- Sticky Button (Mobile) -->
+  <a href="#games" class="sticky-btn">🎮 Tap to Play</a>
 </body>
 </html>
